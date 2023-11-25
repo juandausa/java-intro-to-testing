@@ -1,6 +1,5 @@
 package collections.stack;
 
-import collections.exception.OverflowException;
 import collections.exception.UnderflowException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
