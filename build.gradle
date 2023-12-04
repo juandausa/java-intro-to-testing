@@ -21,8 +21,14 @@ application {
     mainClass = ''
 }
 
-tasks.named('test') {
+tasks.named('test', Test) {
     useJUnitPlatform()
+
+    maxHeapSize = '1G'
+
+    testLogging {
+        events "passed"
+    }
 }
 
 jacocoTestReport {
