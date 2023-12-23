@@ -18,7 +18,7 @@ java {
 }
 
 application {
-    mainClass = ''
+    mainClass = 'TestingDojo'
 }
 
 tasks.named('test', Test) {
