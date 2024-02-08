@@ -37,4 +37,11 @@ class StackTest {
         Assertions.assertTrue(stack.isEmpty());
     }
 
+    @Test
+    void afterPushingXAndY_PopWillReturnYAndX() {
+        stack.push(1);
+        stack.push(2);
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertEquals(1, stack.pop());
+    }
 }

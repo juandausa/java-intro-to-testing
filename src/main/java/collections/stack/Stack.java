@@ -8,7 +8,6 @@ public class Stack {
 
     private final int[] elements = new int[CAPACITY];
     private int size = 0;
-    private int headIdx = CAPACITY;
     
     public boolean isEmpty() {
         return size == 0;
@@ -23,9 +22,7 @@ public class Stack {
             throw new OverflowException();
         }
 
-        headIdx--;
-        size++;
-        elements[headIdx] = element;
+        elements[size++] = element;
     }
 
     public int pop() {
@@ -33,7 +30,6 @@ public class Stack {
             throw new UnderflowException();
         }
 
-        size--;
-        return elements[headIdx--];
+        return elements[--size];
     }
 }
