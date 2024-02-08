@@ -10,7 +10,7 @@ class StackTest {
     private Stack stack;
 
     @BeforeEach
-    void setup() {
+    void setUp() {
         stack = new Stack();
     }
 
@@ -26,8 +26,8 @@ class StackTest {
     }
 
     @Test
-    void willThrowUnderflowException_WhenEmptyStackIsDequeued() {
-        Assertions.assertThrowsExactly(UnderflowException.class, () -> stack.pop());
+    void willThrowUnderflowException_WhenEmptyStackIsPopped() {
+        Assertions.assertThrows(UnderflowException.class, stack::pop);
     }
 
     @Test
@@ -38,10 +38,25 @@ class StackTest {
     }
 
     @Test
-    void afterPushingXAndY_PopWillReturnYAndX() {
-        stack.push(1);
-        stack.push(2);
-        Assertions.assertEquals(2, stack.pop());
-        Assertions.assertEquals(1, stack.pop());
+    void afterTwoPushesAndOnePop_WillNotBeEmpty() {
+        stack.push(0);
+        stack.push(0);
+        stack.pop();
+        Assertions.assertFalse(stack.isEmpty());
     }
+
+    @Test
+    void afterPushingX_WillPopX() {
+        stack.push(42);
+        Assertions.assertEquals(42, stack.pop());
+    }
+
+    @Test
+    void afterPushingXAndY_WillPopYAndX() {
+        stack.push(42);
+        stack.push(100);
+        Assertions.assertEquals(100, stack.pop());
+        Assertions.assertEquals(42, stack.pop());
+    }
+
 }
